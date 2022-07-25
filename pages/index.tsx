@@ -131,21 +131,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     const orders = await stripe.checkout.sessions.list({
       limit: 100,
+
       expand: ['data.line_items'],
       ...(startingAfter !== '' && { starting_after: startingAfter }),
     })
 
-    itemsSold += orders.data.reduce(
-      (prev, cur) =>
-        cur.line_items
-          ? cur.line_items.data.reduce(
-              (prevLineItem, curLineItem) =>
-                (prevLineItem += curLineItem?.quantity ?? 0),
-              0
-            )
-          : 0,
-      0
-    )
+    itemsSold += orders.data
+      .filter(order => order.status === 'complete')
+      .reduce(
+        (prev, cur) =>
+          cur.line_items
+            ? cur.line_items.data.reduce(
+                (prevLineItem, curLineItem) =>
+                  (prevLineItem += curLineItem?.quantity ?? 0),
+                0
+              )
+            : 0,
+        0
+      )
 
     if (orders.has_more) {
       hasMore = true
