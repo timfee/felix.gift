@@ -27,7 +27,7 @@ const Index: NextPage<{ stock: number }> = ({ stock }) => {
           height={230}
         />
       </header>
-      <main className="mx-6">
+      <main className="mx-6 mb-12">
         <Logo className="max-w-xl mx-auto mt-2 mb-8" />
         <section className="p-6 mx-auto mt-6 prose bg-white rounded-lg shadow shadow-slate-400">
           <p className="m-2 text-xl font-medium leading-8 text-purple-800">
