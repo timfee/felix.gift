@@ -47,14 +47,14 @@ const Index: NextPage<{ stock: number }> = ({ stock }) => {
         </section>
 
         <form className="mx-auto mt-8 max-w-prose">
-          <div className="flex flex-row mx-auto space-x-12 w-fit">
+          <div className="mx-auto md:space-x-12 md:flex md:flex-row w-fit">
             <div className="text-center">
               <h2 className="mb-3 text-lg font-medium text-gray-900">
                 What’ll it be?
               </h2>
 
               <Quantity quantity={[quantity, setQuantity]} />
-              <p className="pt-2 text-sm text-slate-600">
+              <p className="pt-2 mb-4 text-sm text-slate-600 md:mb-0">
                 {formatter.format(COST_PER_UNIT)} each
               </p>
             </div>
