@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -15,6 +16,9 @@ const Index: NextPage<{ stock: number }> = ({ stock }) => {
   const router = useRouter()
   return (
     <>
+      <Head>
+        <title>Felix Freshener</title>
+      </Head>
       <header className="mx-auto -mt-12 w-fit animate-wobble">
         <Image
           src="/felix.png"
