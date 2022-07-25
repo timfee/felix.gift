@@ -1,15 +1,15 @@
-export const formatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
 })
 
 export const align = (
   leftText: string,
   rightText: string,
-  delimiter = ".",
+  delimiter = '.',
   lineLength = 30,
-  afterLeftText = " ",
-  beforeRightText = " "
+  afterLeftText = ' ',
+  beforeRightText = ' '
 ) => {
   const padAmount =
     lineLength -

@@ -119,7 +119,7 @@ const Index: NextPage<{ stock: number }> = ({ stock }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const stripe = new stripeLib(process.env.STRIPE_SECRET || '', {
     apiVersion: '2020-08-27',
   })

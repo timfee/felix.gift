@@ -1,7 +1,6 @@
-import useForwardedRef from "@/lib/useForwardedRef"
-import { MinusIcon, PlusIcon } from "@heroicons/react/outline"
-import clsx from "clsx"
-import { Dispatch, FC, forwardRef, SetStateAction } from "react"
+import { MinusIcon, PlusIcon } from '@heroicons/react/outline'
+import clsx from 'clsx'
+import { Dispatch, FC, SetStateAction } from 'react'
 
 type QuantityType = {
   quantity: [number, Dispatch<SetStateAction<number>>]
@@ -29,10 +28,10 @@ const Quantity: FC<QuantityType> = ({ quantity: [quantity, setQuantity] }) => {
         }}
         type="button"
         className={clsx(
-          "text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center",
+          'text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center',
           {
-            "bg-slate-400": quantity <= 1,
-            " bg-indigo-700 hover:bg-indigo-800  focus:ring-indigo-300 ":
+            'bg-slate-400': quantity <= 1,
+            ' bg-indigo-700 hover:bg-indigo-800  focus:ring-indigo-300 ':
               quantity > 0,
           }
         )}>
@@ -65,10 +64,10 @@ const Quantity: FC<QuantityType> = ({ quantity: [quantity, setQuantity] }) => {
         type="button"
         disabled={quantity >= 10}
         className={clsx(
-          "text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center",
+          'text-white focus:ring-4 focus:outline-none font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center',
           {
-            "bg-slate-400": quantity >= 10,
-            " bg-indigo-700 hover:bg-indigo-800  focus:ring-indigo-300 ":
+            'bg-slate-400': quantity >= 10,
+            ' bg-indigo-700 hover:bg-indigo-800  focus:ring-indigo-300 ':
               quantity < 10,
           }
         )}>
