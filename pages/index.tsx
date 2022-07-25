@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -13,6 +14,7 @@ import { align, formatter } from '@/lib/utils'
 
 const Index: NextPage<{ stock: number }> = ({ stock }) => {
   const [quantity, setQuantity] = useState(1)
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
   return (
     <>
@@ -102,17 +104,32 @@ const Index: NextPage<{ stock: number }> = ({ stock }) => {
 
           <button
             onClick={e => {
-              fetch('/api/checkout?quantity=' + quantity).then(
-                async response => {
+              setLoading(true)
+              fetch('/api/checkout?quantity=' + quantity)
+                .then(async response => {
                   router.push((await response.json()).url)
-                }
-              )
+                })
+                .finally(() => {
+                  setLoading(false)
+                })
               e.preventDefault()
               return false
             }}
             type="submit"
-            className="flex items-center justify-center w-full px-8 py-3 mt-8 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Pay {formatter.format(SHIPPING_COST + quantity * COST_PER_UNIT)}
+            className={clsx(
+              'flex items-center justify-center w-full px-8 py-3 mt-8 text-base font-medium border border-transparent rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
+              {
+                ' text-white bg-indigo-600 hover:bg-indigo-700':
+                  !loading && stock - quantity > 0,
+                'bg-slate-500 text-slate-800': loading || stock - quantity < 1,
+              }
+            )}>
+            {loading && 'Please wait...'}
+            {!loading && (
+              <>
+                Pay {formatter.format(SHIPPING_COST + quantity * COST_PER_UNIT)}
+              </>
+            )}
           </button>
         </form>
         <aside className="mx-auto mt-12 max-w-prose">
