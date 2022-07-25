@@ -10,9 +10,15 @@ export default async function handler(
   })
 
   const checkout = await stripe.checkout.sessions.create({
+    shipping_options: [
+      {
+        shipping_rate: 'shr_1LPZJKINIX6jLdpDtcJfFfOH',
+      },
+    ],
     line_items: [
       {
         price: 'price_1LNKAqINIX6jLdpDMuKv5juA',
+
         quantity:
           typeof req.query.quantity === 'string'
             ? parseInt(req.query.quantity)

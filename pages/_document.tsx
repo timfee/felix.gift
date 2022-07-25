@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <meta property="og:type" content="product" />
           <meta property="og:title" content="Felix Freshener" />
           <meta property="og:url" content="https://felix.gift" />
-          <meta property="og:image" content="https://felix.gift/Felix.png" />
+          <meta property="og:image" content="https://felix.gift/felix.png" />
           <meta
             property="og:description"
             content="Amaze your friends, terrify children and give your car the special musk that only a hairless cat can provide."
