@@ -12,12 +12,12 @@ export default async function handler(
   const checkout = await stripe.checkout.sessions.create({
     shipping_options: [
       {
-        shipping_rate: 'shr_1LPZJKINIX6jLdpDtcJfFfOH',
+        shipping_rate: 'shr_1LV2TBINIX6jLdpDjqUwOho6',
       },
     ],
     line_items: [
       {
-        price: 'price_1LNKAqINIX6jLdpDMuKv5juA',
+        price: 'price_1LV2RjINIX6jLdpDKz4KzIQK',
 
         quantity:
           typeof req.query.quantity === 'string'
